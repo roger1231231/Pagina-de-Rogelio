@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> <!-- Línea añadida -->
+	<title>Valentine's Day</title>
+	<style>
+		body {
+			background-color: #ffcccc;
+			font-family: 'Brush Script MT', cursive;
+			text-align: center;
+			padding: 50px;
+			position: relative;
+		}
+		h1 {
+			font-size: 50px;
+			margin-bottom: 50px;
+		}
+		button {
+			font-size: 30px;
+			padding: 10px 30px;
+			cursor: pointer;
+			background-color: #ff5733;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			margin: 0 10px;
+			position: relative;
+		}
+		.heart {
+			position: absolute;
+			width: 150px;
+			height: 150px;
+			background: url('https://image.flaticon.com/icons/svg/840/840347.svg') no-repeat;
+			background-size: contain;
+			animation: heart-animation 2s infinite;
+			top: 10px;
+			left: 10px;
+		}
+		@keyframes heart-animation {
+			0% {
+				top: -75px;
+				left: -75px;
+				opacity: 0;
+			}
+			50% {
+				top: 75px;
+				left: 75px;
+				opacity: 1;
+			}
+			100% {
+				top: -75px;
+				left: -75px;
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="heart"></div>
+	<div class="heart" style="top: 200px; left: 200px;"></div>
+	<div class="heart" style="top: 500px; left: 500px;"></div>
+	<h1>Quieres ser mi valentin?</h1>
+	<button id="Si">S&iacute;, mi amor hermoso</button>
+	<button id="no">No</button>
+
+	<script>
+		const noButton = document.getElementById('no');
+		const yesButton = document.getElementById('Si'); // Cambiado de 'yes' a 'Si'
+		let disappearTime = 1000;
+
+		noButton.style.display = 'inline-block';
+
+		noButton.addEventListener('click', () => {
+			noButton.style.display = 'none';
+			setTimeout(() => {
+				disappearTime /= 2;
+				const randomX = Math.random() * (window.innerWidth - noButton.clientWidth);
+				const randomY = Math.random() * (window.innerHeight - noButton.clientHeight);
+				noButton.style.left = randomX + 'px';
+				noButton.style.top = randomY + 'px';
+				noButton.style.position = 'absolute';
+				noButton.style.display = 'inline-block';
+			}, disappearTime);
+		});
+
+		yesButton.addEventListener('click', () => {
+			alert('eres el amor de mi vida');
+		});
+	</script>
+</body>
+</html>
